@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins(
-                "https://easydatasoftvisit.onrender.com",
+                "https://easydatasoftvisitfront.onrender.com",
                 "http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod()
