@@ -1,6 +1,7 @@
-﻿var builder = WebApplication.CreateBuilder(args);
 
-// Puerto para Render
+var builder = WebApplication.CreateBuilder(args);
+
+// Puerto para Render (Render escucha en el 80 por defecto)
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     serverOptions.ListenAnyIP(80);
@@ -23,12 +24,14 @@ builder.Services.AddCors(options =>
                 "https://easydatasoftvisit.onrender.com",
                 "http://localhost:4200")
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials(); // Solo si usas cookies o auth headers
         });
 });
 
 var app = builder.Build();
 
+// Archivos estáticos y página por defecto (útil si integras Angular en el mismo proyecto)
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
@@ -39,13 +42,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Puedes dejarlo comentado si Render ya maneja HTTPS
+// No usar HTTPS redirection dentro del contenedor de Render
+// Render ya maneja HTTPS externamente
 // app.UseHttpsRedirection();
 
+// CORS debe ir antes de Authorization y MapControllers
 app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Fallback para SPA (opcional si usas Angular desde otra URL)
 app.MapFallbackToFile("/index.html");
 
 app.Run();
