@@ -1,0 +1,6 @@
+@SistemaDeVisitaCampeon.Server_HostAddress = http://localhost:5045
+
+GET {{SistemaDeVisitaCampeon.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
