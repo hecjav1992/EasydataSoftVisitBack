@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins(
                 "https://easydatasoftvisitfront.onrender.com",
-                "http://localhost:4200")
+                "https://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials(); // solo si usas auth o cookies
