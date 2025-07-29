@@ -33,3 +33,4 @@ C:\Users\Easy Data\source\repos\SistemaDeVisitaCampeon\SistemaDeVisitaCampeon.Se
 C:\Users\Easy Data\source\repos\SistemaDeVisitaCampeon\SistemaDeVisitaCampeon.Server\obj\Debug\net8.0\SistemaDeVisitaCampeon.Server.pdb
 C:\Users\Easy Data\source\repos\SistemaDeVisitaCampeon\SistemaDeVisitaCampeon.Server\obj\Debug\net8.0\SistemaDeVisitaCampeon.Server.genruntimeconfig.cache
 C:\Users\Easy Data\source\repos\SistemaDeVisitaCampeon\SistemaDeVisitaCampeon.Server\obj\Debug\net8.0\ref\SistemaDeVisitaCampeon.Server.dll
+C:\Users\Easy Data\source\repos\SistemaDeVisitaCampeon\SistemaDeVisitaCampeon.Server\obj\Debug\net8.0\SistemaDeVisitaCampeon.Server.sourcelink.json
