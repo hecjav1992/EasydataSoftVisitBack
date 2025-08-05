@@ -40,6 +40,7 @@ app.UseStaticFiles();
 
 app.UseCors(MyAllowSpecificOrigins);
 
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
