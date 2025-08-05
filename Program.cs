@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeVisitaCampeon.Server;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure DbContext with PostgreSQL connection
