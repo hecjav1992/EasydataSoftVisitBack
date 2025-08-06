@@ -54,13 +54,22 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
+          
+
             var user = await _context.user
-                .FirstOrDefaultAsync(u => u.usuario == request.usuario && u.contrasena == request.contrasena);
+    .Where(u => u.usuario == request.usuario && u.contrasena == request.contrasena)
+    .Select(u => new {
+        u.id,
+        u.usuario,
+        u.contrasena,
+        u.rol
+    })
+    .FirstOrDefaultAsync();
 
             if (user != null)
             {
-               
-                return Ok(new { success = true, token = "token_generado_123" });
+
+                return Ok(new { success = true, token = "token_generado_123", message = user.rol });
             }
 
             return Unauthorized(new { success = false, message = "Credenciales inválidas" });
@@ -71,6 +80,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         {
             public string? usuario { get; set; }
             public string? contrasena { get; set; }
+            public string? rol {  get; set; }
         }
 
     }
