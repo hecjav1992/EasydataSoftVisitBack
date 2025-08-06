@@ -7,7 +7,7 @@ namespace SistemaDeVisitaCampeon.Server.Model
     public class Productos
     {
         [Key]
-        public int id { get; set; }
+        public int id_producto { get; set; }
         public string? nombre { get; set; }
         public string? descripcion { get; set; }
         public float? precio { get; set; }

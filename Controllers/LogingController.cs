@@ -21,7 +21,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         public async Task<IActionResult> productos()
         {
             var productos = await _context.productos.Select(u => new {
-            u.id,
+            u.id_producto,
             u.nombre,
             u.descripcion,
             u.precio,
