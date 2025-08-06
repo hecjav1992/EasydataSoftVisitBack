@@ -17,19 +17,19 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("productos")]
+        public async Task<IActionResult> productos()
         {
-            var lista = new List<object>
-    {
-        new { id = 1, nombre = "Juan" },
-        new { id = 2, nombre = "Ana" },
-        new { id = 3, nombre = "Luis" }
-    };
+            var productos = await _context.productos.Select(u => new {
+            u.id,
+            u.nombre,
+            u.descripcion,
+            u.precio,
+            u.stock
+             }).ToListAsync(); ;
 
-            return Ok(lista);
+            return Ok(productos);
         }
-
         /*
                 [HttpPost("login")]
                 public IActionResult Login([FromBody] LoginRequest request)

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaDeVisitaCampeon.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6c5e9d408f666b9b086516f91d601c60be5b2aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56974636e002f315a7c100cb49e6649e8bbcbf66")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaDeVisitaCampeon.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaDeVisitaCampeon.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

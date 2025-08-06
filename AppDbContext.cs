@@ -7,5 +7,6 @@ namespace SistemaDeVisitaCampeon.Server
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Usuarios> user { get; set; }
+        public DbSet<Productos> productos { get; set; }
     }
 }
