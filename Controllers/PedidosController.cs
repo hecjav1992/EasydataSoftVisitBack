@@ -20,11 +20,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PedidosRequest request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            try
-            {
+           
                 var nuevoPedido = new Pedidos
                 {
                     usuario = request.usuario,
@@ -46,21 +42,14 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
                     success = true,
                     message = nuevoPedido
                 });
-            }
+            
     
 
-            catch (Exception ex)
-            {
-                var innerMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                return StatusCode(500, new { success = false, message = innerMessage });
-            }
+      
         }
-
-        // Modelo para bindear el JSON entrante
         public class PedidosRequest
         {
             public int? id_pedido { get; set; }
-            public int? id_usuario { get; set; }
             public string usuario { get; set; }
             public int cantidad { get; set; }
             public DateTime? fecha_pedido { get; set; }
