@@ -9,7 +9,6 @@ namespace SistemaDeVisitaCampeon.Server.Model
         [Key]
         public int id_pedido { get; set; }  // clave primaria
         public string usuario { get; set; }
-        public int cantidad { get; set; }
         public DateTime fecha_pedido { get; set; }
         public string estado { get; set; }
         public float latitud { get; set; }

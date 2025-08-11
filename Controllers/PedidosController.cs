@@ -24,13 +24,12 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
                 var nuevoPedido = new Pedidos
                 {
                     usuario = request.usuario,
-                    cantidad = request.cantidad,
                     fecha_pedido = request.fecha_pedido ?? DateTime.Now,
                     estado = request.estado ?? "pendiente",
                     latitud = request.latitud ?? 0,
                     longitud = request.longitud ?? 0,
                     direccion = request.direccion,
-                    total = request.total ?? 0,
+                    total = request.cantidad,
                     observaciones = request.observaciones
                 };
 
