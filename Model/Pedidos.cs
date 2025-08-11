@@ -7,17 +7,17 @@ namespace SistemaDeVisitaCampeon.Server.Model
     {
 
         [Key]
-            public int Id { get; set; }
-            public string usuario { get; set; }
-            public int cantidad { get; set; }
-            public DateTime fecha_pedido { get; set; }
-            public string estado { get; set; }
-            public float latitud { get; set; }
-            public float longitud { get; set; }
-            public string direccion { get; set; }
-            public float total { get; set; }
-            public string observaciones { get; set; }
-        }
+        public int id_pedido { get; set; }  // clave primaria
+        public string usuario { get; set; }
+        public int cantidad { get; set; }
+        public DateTime fecha_pedido { get; set; }
+        public string estado { get; set; }
+        public float latitud { get; set; }
+        public float longitud { get; set; }
+        public string direccion { get; set; }
+        public float total { get; set; }
+        public string observaciones { get; set; }
+    }
 
     
 }
