@@ -74,6 +74,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         {
             public int? id_pedido { get; set; }
             public int? id_usuario { get; set; }
+            public String usuario { get; set; }
             public int cantidad { get; set; }
             public DateTime? fecha_pedido { get; set; }
             public String? estado { get; set; }
