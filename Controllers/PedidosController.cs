@@ -47,6 +47,12 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
 
             };
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // verás el error exacto
+            }
+
+
             _context.pedidos.Add(nuevoPedido);
             await _context.SaveChangesAsync();
 
