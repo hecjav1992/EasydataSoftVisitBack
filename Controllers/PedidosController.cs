@@ -39,8 +39,8 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
             {
                 fecha_pedido = request.fecha_pedido,
                 estado = request.estado,
-                latitud = (float)request.latitud,
-                longitud = (float)request.longitud,
+                latitud = request.latitud ?? 0,
+                longitud = request.longitud ?? 0,
                 direccion = request.direccion,
                 total = (float)request.total,
                 observaciones = request.observaciones,
