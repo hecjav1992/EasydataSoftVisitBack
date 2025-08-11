@@ -57,14 +57,14 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
           
 
             var user = await _context.user
-    .Where(u => u.usuario == request.usuario && u.contrasena == request.contrasena)
-    .Select(u => new {
-        u.id,
-        u.usuario,
-        u.contrasena,
-        u.rol
+            .Where(u => u.usuario == request.usuario && u.contrasena == request.contrasena)
+            .Select(u => new {
+              u.id,
+              u.usuario,
+              u.contrasena,
+              u.rol
     })
-    .FirstOrDefaultAsync();
+             .FirstOrDefaultAsync();
 
             if (user != null)
             {

@@ -8,5 +8,6 @@ namespace SistemaDeVisitaCampeon.Server
 
         public DbSet<Usuarios> user { get; set; }
         public DbSet<Productos> productos { get; set; }
+        public DbSet<Pedidos> pedidos { get; set; }
     }
 }
