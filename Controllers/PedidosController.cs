@@ -42,7 +42,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
                 latitud = request.latitud ?? 0,
                 longitud = request.longitud ?? 0,
                 direccion = request.direccion,
-                total = (float)request.total,
+                total = request.total ?? 0,
                 observaciones = request.observaciones,
 
             };
@@ -56,11 +56,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
             _context.pedidos.Add(nuevoPedido);
             await _context.SaveChangesAsync();
 
-            return Ok(new
-            {
-                success = true,
-                message = nuevoPedido
-            });
+            return Ok(new { success = true, message = "Pedido creado" });
         }
 
         // PUT api/<Pedidos>/5
