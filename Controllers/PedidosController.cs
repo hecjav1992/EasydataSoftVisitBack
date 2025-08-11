@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaDeVisitaCampeon.Server.Model;
+using System;
+using System.Threading.Tasks;
 
 namespace SistemaDeVisitaCampeon.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-
     public class PedidosController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -17,23 +15,10 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         {
             _context = context;
         }
-        // GET: api/<Pedidos>
-      //  [HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-          //  return new string[] { "value1", "value2" };
-        //}
 
-        // GET api/<Pedidos>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<Pedidos>
+        // POST api/Pedidos
         [HttpPost]
-        public async Task<IActionResult>Post([FromBody] PedidosRequest request)
+        public async Task<IActionResult> Post([FromBody] PedidosRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -42,14 +27,15 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
             {
                 var nuevoPedido = new Pedidos
                 {
+                    usuario = request.usuario,
+                    cantidad = request.cantidad,
                     fecha_pedido = request.fecha_pedido ?? DateTime.Now,
                     estado = request.estado ?? "pendiente",
                     latitud = request.latitud ?? 0,
                     longitud = request.longitud ?? 0,
                     direccion = request.direccion,
                     total = request.total ?? 0,
-                    observaciones = request.observaciones,
-                    cantidad = request.cantidad
+                    observaciones = request.observaciones
                 };
 
                 _context.pedidos.Add(nuevoPedido);
@@ -63,40 +49,25 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
             }
             catch (Exception ex)
             {
-                // Aquí loguea el error en tu sistema de logs
+                // Log error aquí si tienes un sistema de logs
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }
 
-        // PUT api/<Pedidos>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<Pedidos>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-
-
+        // Modelo para bindear el JSON entrante
         public class PedidosRequest
         {
             public int? id_pedido { get; set; }
             public int? id_usuario { get; set; }
-            public String usuario { get; set; }
+            public string usuario { get; set; }
             public int cantidad { get; set; }
             public DateTime? fecha_pedido { get; set; }
-            public String? estado { get; set; }
+            public string estado { get; set; }
             public float? latitud { get; set; }
             public float? longitud { get; set; }
-            public String? direccion { get; set; }
+            public string direccion { get; set; }
             public float? total { get; set; }
-            public String? observaciones { get; set; }
-
-
+            public string observaciones { get; set; }
         }
-
     }
 }
