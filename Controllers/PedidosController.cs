@@ -35,28 +35,37 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         [HttpPost]
         public async Task<IActionResult>Post([FromBody] PedidosRequest request)
         {
-            var nuevoPedido = new Pedidos
-            {
-                fecha_pedido = request.fecha_pedido,
-                estado = request.estado,
-                latitud = request.latitud ?? 0,
-                longitud = request.longitud ?? 0,
-                direccion = request.direccion,
-                total = request.total ?? 0,
-                observaciones = request.observaciones,
-
-            };
-
             if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
             {
-                return BadRequest(ModelState); // verás el error exacto
+                var nuevoPedido = new Pedidos
+                {
+                    fecha_pedido = request.fecha_pedido ?? DateTime.Now,
+                    estado = request.estado ?? "pendiente",
+                    latitud = request.latitud ?? 0,
+                    longitud = request.longitud ?? 0,
+                    direccion = request.direccion,
+                    total = request.total ?? 0,
+                    observaciones = request.observaciones,
+                    cantidad = request.cantidad
+                };
+
+                _context.pedidos.Add(nuevoPedido);
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    success = true,
+                    message = nuevoPedido
+                });
             }
-
-
-            _context.pedidos.Add(nuevoPedido);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { success = true, message = "Pedido creado" });
+            catch (Exception ex)
+            {
+                // Aquí loguea el error en tu sistema de logs
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
         // PUT api/<Pedidos>/5
