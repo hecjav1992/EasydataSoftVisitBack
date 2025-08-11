@@ -47,10 +47,12 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
                     message = nuevoPedido
                 });
             }
+    
+
             catch (Exception ex)
             {
-                // Log error aquí si tienes un sistema de logs
-                return StatusCode(500, new { success = false, message = ex.Message });
+                var innerMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return StatusCode(500, new { success = false, message = innerMessage });
             }
         }
 
