@@ -26,7 +26,7 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
             u.descripcion,
             u.precio,
             u.stock
-             }).ToListAsync(); ;
+             }).ToListAsync(); 
 
             return Ok(productos);
         }
@@ -54,8 +54,6 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-          
-
             var user = await _context.user
             .Where(u => u.usuario == request.usuario && u.contrasena == request.contrasena)
             .Select(u => new {

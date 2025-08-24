@@ -3,8 +3,6 @@ using SistemaDeVisitaCampeon.Server;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Configure DbContext with PostgreSQL connection
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.WebHost.ConfigureKestrel(serverOptions =>

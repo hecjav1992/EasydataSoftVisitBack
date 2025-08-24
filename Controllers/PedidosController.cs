@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SistemaDeVisitaCampeon.Server.Model;
 using System;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
             _context = context;
         }
 
-        // POST api/Pedidos
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PedidosRequest request)
         {
@@ -45,6 +45,21 @@ namespace SistemaDeVisitaCampeon.Server.Controllers
     
 
       
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> get()
+        {
+            var pedidos=await _context.pedidos.Select
+                (u => new {
+                    u.id_pedido,
+                    u.usuario,
+                    u.fecha_pedido,
+                    u.latitud,
+                    u.longitud
+                }).ToListAsync();
+
+            return Ok(pedidos);
         }
         public class PedidosRequest
         {
